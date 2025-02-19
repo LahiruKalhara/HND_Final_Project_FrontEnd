@@ -20,11 +20,9 @@ const Header = () => {
           <li><Link to="/movies" onClick={() => setMenuOpen(false)}>Movies</Link></li>
           <li><Link to="/booking" onClick={() => setMenuOpen(false)}>Booking</Link></li>
           <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact Us</Link></li>
-          {/* Show Login/SignUp only in mobile view inside the menu */}
           <li className="mobile-login"><Link to="/login" onClick={() => setMenuOpen(false)}>Login/SignUp</Link></li>
         </ul>
       </div>
-      {/* Keep Login/SignUp in desktop view */}
       <div className="right">
         <p><Link to="/login">Login/SignUp</Link></p>
       </div>
