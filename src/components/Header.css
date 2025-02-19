@@ -1,0 +1,31 @@
+.header{background: linear-gradient(to right, black, rgb(1, 0, 48)); display: flex; align-items: center; justify-content: space-between; padding: 1em 2em; transition: all 0.3s ease-in-out; position: relative;} 
+.header .left{display: flex; color: white; gap: 2.5em; align-items: center;} 
+.header .left img{height: 2.4em; width: 9em; transition: opacity 0.5s ease;} 
+.header .left ul{display: flex; list-style: none; gap: 3em;} 
+.header .left ul li{position: relative;} 
+.header .left ul li a{text-decoration: none; color: white; font-size: 1.2em; font-weight: 500; transition: color 0.3s ease;} 
+.header .left ul li a:hover{color: #00bcd4;} 
+.header .left ul li a::before{content: ''; position: absolute; width: 0; height: 2px; background-color: #00bcd4; bottom: 0; left: 50%; transition: width 0.3s ease, left 0.3s ease;} 
+.header .left ul li a:hover::before{width: 100%; left: 0;} 
+
+.header .right p{color: white; font-size: 1.2em; font-weight: 500; cursor: pointer; transition: color 0.3s ease, transform 0.3s ease;} 
+.header .right p:hover{color: #00bcd4; transform: scale(1.05);} 
+
+@media (max-width: 900px) {
+  .header { padding: 1em; } 
+  .header .left { gap: 1em; width: 100%; justify-content: space-between; } 
+  .header .left ul { flex-direction: column; position: absolute; top: 4em; left: 0; width: 100%; background: rgba(0, 0, 0, 0.9); padding: 1em 0; text-align: center; transition: transform 0.3s ease-in-out; transform: translateY(-100%); opacity: 0; visibility: hidden; } 
+  .header .left ul.open { transform: translateY(0); opacity: 1; visibility: visible; } 
+  .header .left ul li { padding: 1em 0; } 
+
+  .header .left ul .mobile-login { margin-top: 1em; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 1em; display: block; }
+
+  .header .right { display: none; }
+
+  .menu-toggle { display: flex; flex-direction: column; cursor: pointer; gap: 5px; position: relative; z-index: 10; } 
+  .menu-toggle span { display: block; width: 30px; height: 3px; background: white; } 
+}
+
+@media (min-width: 850px) {
+  .header .left ul .mobile-login { display: none; }
+}
