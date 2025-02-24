@@ -1,0 +1,102 @@
+.feedback-section {
+  padding: 4em 2em;
+  background: linear-gradient(to right, black, rgb(1, 0, 48)); /* Keep background as per theme */
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.feedback-title {
+  font-size: 3em;
+  color: #00bcd4;
+  text-shadow: 0 0 15px #00bcd4, 0 0 30px rgba(0, 188, 212, 0.5);
+  margin-bottom: 1.5em;
+}
+
+.feedback-slider {
+  overflow: hidden; 
+  width: 100%; 
+  margin-bottom: 2em;
+}
+
+.feedback-cards {
+  display: flex;
+  width: max-content; 
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.feedback-cards-left {
+  animation: slide-left 40s linear infinite; 
+}
+
+.feedback-cards-right {
+  animation: slide-right 100s linear infinite; 
+}
+
+.feedback-card {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 2em;
+  margin-right: 2em;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+}
+
+.feedback-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.customer-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.rating {
+  color: #ffdd00;
+  font-size: 1.2em;
+}
+
+.customer-review {
+  font-size: 1em;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Slide left animation */
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Move the reviews left to show new ones */
+  }
+}
+
+/* Slide right animation */
+@keyframes slide-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%); /* Move the reviews right to show new ones */
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .feedback-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feedback-card {
+    margin-right: 0;
+    margin-bottom: 2em;
+  }
+}

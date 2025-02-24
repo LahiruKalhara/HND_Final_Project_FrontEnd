@@ -1,24 +1,191 @@
-.hero {height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(to right, black, rgb(1, 0, 48)); color: white; position: relative; overflow: hidden;} 
-.hero::before {content: ""; position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0, 188, 212, 0.2) 0%, transparent 60%); z-index: 1; pointer-events: none;} 
-.glowing-lines {position: absolute; width: 100%; height: 100%; overflow: hidden; z-index: 0;} 
-.glowing-lines span {position: absolute; display: block; width: 2px; height: 100px; background: rgba(0, 188, 212, 0.8); box-shadow: 0 0 10px #00bcd4, 0 0 20px rgba(0, 188, 212, 0.6); animation: moveLines 4s linear infinite, fadeInOut 5s ease-in-out infinite;} 
-.glowing-lines span:nth-child(1) {left: 10%; animation-duration: 3s, 5s;} 
-.glowing-lines span:nth-child(2) {left: 25%; animation-duration: 4.5s, 6s;} 
-.glowing-lines span:nth-child(3) {left: 40%; animation-duration: 5s, 7s;} 
-.glowing-lines span:nth-child(4) {left: 55%; animation-duration: 3.8s, 6s;} 
-.glowing-lines span:nth-child(5) {left: 70%; animation-duration: 4.2s, 5s;} 
-.glowing-lines span:nth-child(6) {left: 85%; animation-duration: 5.5s, 8s;} 
-.hero-content {opacity: 0; transform: translateY(20px); animation: fadeInUp 1s ease-out forwards; z-index: 2;} 
-.hero h1 {font-size: 3.5em; font-weight: bold; text-transform: uppercase;} 
-.hero h1 span {color: #00bcd4; text-shadow: 0 0 10px #00bcd4;} 
-.hero p {font-size: 1.2em; margin: 0.5em 0 1.5em; opacity: 0.8;} 
-.hero-btn {padding: 0.8em 2em; font-size: 1.2em; font-weight: bold; color: white; background: #00bcd4; border: none; border-radius: 5px; cursor: pointer; transition: all 1s ease; box-shadow: 0 0 10px #00bcd4;} 
-.hero-btn:hover {transform: scale(1.1); box-shadow: 0 0 150px #00bcd4, 0 0 25px rgba(0, 188, 212, 0.5);} 
-@keyframes moveLines {0% {transform: translateY(100vh); opacity: 0;} 50% {opacity: 1;} 100% {transform: translateY(-100vh); opacity: 0;}} 
-@keyframes fadeInOut {0%, 100% {opacity: 0;} 50% {opacity: 1;}} 
-@keyframes fadeInUp {from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);}}
-
-
-@media (max-width: 1024px) {.hero h1 {font-size: 3em;} .hero p {font-size: 1em;} .hero-btn {font-size: 1em; padding: 0.7em 1.8em;}} 
-@media (max-width: 768px) {.hero h1 {font-size: 2.5em;} .hero p {font-size: 0.9em;} .hero-btn {font-size: 0.9em; padding: 0.6em 1.5em;}} 
-@media (max-width: 480px) {.hero {padding: 0 1em;} .hero h1 {font-size: 2em;} .hero p {font-size: 0.8em;} .hero-btn {font-size: 0.8em; padding: 0.5em 1.2em;}} 
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(to right, black, rgb(1, 0, 48));
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 188, 212, 0.2) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .glowing-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  .glowing-lines span {
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 100px;
+    background: rgba(0, 188, 212, 0.8);
+    box-shadow: 0 0 10px #00bcd4, 0 0 20px rgba(0, 188, 212, 0.6);
+    animation: moveLines 4s linear infinite, fadeInOut 5s ease-in-out infinite;
+  }
+  
+  .glowing-lines span:nth-child(1) {
+    left: 10%;
+    animation-duration: 3s, 5s;
+  }
+  
+  .glowing-lines span:nth-child(2) {
+    left: 25%;
+    animation-duration: 4.5s, 6s;
+  }
+  
+  .glowing-lines span:nth-child(3) {
+    left: 40%;
+    animation-duration: 5s, 7s;
+  }
+  
+  .glowing-lines span:nth-child(4) {
+    left: 55%;
+    animation-duration: 3.8s, 6s;
+  }
+  
+  .glowing-lines span:nth-child(5) {
+    left: 70%;
+    animation-duration: 4.2s, 5s;
+  }
+  
+  .glowing-lines span:nth-child(6) {
+    left: 85%;
+    animation-duration: 5.5s, 8s;
+  }
+  
+  .hero-content {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    z-index: 2;
+  }
+  
+  .hero h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .hero h1 span {
+    color: #00bcd4;
+    text-shadow: 0 0 10px #00bcd4;
+  }
+  
+  .hero p {
+    font-size: 1.2em;
+    margin: 0.5em 0 1.5em;
+    opacity: 0.8;
+  }
+  
+  .hero-btn {
+    padding: 0.8em 2em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background: #00bcd4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 1s ease, box-shadow 1s ease; /* Separate transition properties */
+    box-shadow: 0 0 10px #00bcd4;
+  }
+  
+  .hero-btn:hover {
+    transition: transform 1s ease, box-shadow 1s ease;
+    transform: scale(1.1);
+    box-shadow: 0 0 150px #00bcd4, 0 0 25px rgba(0, 188, 212, 0.5);
+  }
+  
+  @keyframes moveLines {
+    0% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fadeInOut {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1024px) {
+    .hero h1 {
+      font-size: 3em;
+    }
+    .hero p {
+      font-size: 1em;
+    }
+    .hero-btn {
+      font-size: 1em;
+      padding: 0.7em 1.8em;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5em;
+    }
+    .hero p {
+      font-size: 0.9em;
+    }
+    .hero-btn {
+      font-size: 0.9em;
+      padding: 0.6em 1.5em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero {
+      padding: 0 1em;
+    }
+    .hero h1 {
+      font-size: 2em;
+    }
+    .hero p {
+      font-size: 0.8em;
+    }
+    .hero-btn {
+      font-size: 0.8em;
+      padding: 0.5em 1.2em;
+    }
+  }
+  

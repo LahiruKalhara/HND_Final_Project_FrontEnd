@@ -1,8 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const ContactUs = () => {
   return (
     <div className="contact-us">
+      <Header />
       <h1>Contact Us</h1>
       <p>If you have any questions, feel free to reach out to us!</p>
       <form>

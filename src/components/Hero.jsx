@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Don't forget to import AOS styles
 import "./Hero.css";
 
 const Hero = () => {
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 1000, // Animation duration
+      once: true, // Trigger animation only once
+    });
+  }, []);
+
   return (
     <div className="hero">
       <div className="glowing-lines">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span data-aos="fade-up"></span>
+        <span data-aos="fade-up"></span>
+        <span data-aos="fade-up"></span>
+        <span data-aos="fade-up"></span>
+        <span data-aos="fade-up"></span>
+        <span data-aos="fade-up"></span>
       </div>
 
-      <div className="hero-content">
-        <h1>Welcome to <span>Milano Cineplex</span></h1>
-        <p>Experience the Future of Cinema with Ultra HD & Immersive Sound</p>
-        <button className="hero-btn">Book Now</button>
+      <div className="hero-content" data-aos="fade-up">
+        <h1 data-aos="fade-up" >
+          Welcome to <span>Milano Cineplex</span>
+        </h1>
+        <p data-aos="fade-up">Experience the Future of Cinema with Ultra HD & Immersive Sound</p>
+        <button className="hero-btn" data-aos="fade-up">
+          Book Now
+        </button>
       </div>
     </div>
   );

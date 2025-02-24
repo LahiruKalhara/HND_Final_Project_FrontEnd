@@ -1,10 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const Movies = () => {
   return (
     <div>
-      <h1>Movies Page</h1>
-      <p>Check out the latest movies available for booking.</p>
+      <Header />
     </div>
   );
 };

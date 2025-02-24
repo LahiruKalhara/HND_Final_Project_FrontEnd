@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
+
 
 const Booking = () => {
   return (
     <div>
-      <h1>Booking Page</h1>
+      <Header />
+      
     </div>
   );
 };
