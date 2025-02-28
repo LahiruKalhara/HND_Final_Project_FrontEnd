@@ -12,6 +12,7 @@
     margin-bottom: 1em;
     text-transform: uppercase;
     color: #00bcd4;
+    cursor: default;
   }
   
   .movie-card {

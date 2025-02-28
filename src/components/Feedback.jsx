@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import the AOS styles
+import AOS from 'aos'; 
+import 'aos/dist/aos.css'; 
 import "./Feedback.css";
 
 const Feedback = () => {
   useEffect(() => {
-    AOS.init(); // Initialize AOS
+    AOS.init(); 
   }, []);
 
   const reviews = [

@@ -78,7 +78,7 @@
   }
 }
 
-/* Slide right animation */
+
 @keyframes slide-right {
   0% {
     transform: translateX(0);
