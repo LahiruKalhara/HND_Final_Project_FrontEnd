@@ -101,7 +101,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 1s ease, box-shadow 1s ease; /* Separate transition properties */
+    transition: transform 1s ease, box-shadow 1s ease; 
     box-shadow: 0 0 10px #00bcd4;
   }
   

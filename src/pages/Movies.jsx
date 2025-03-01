@@ -1,12 +1,13 @@
 import React from 'react';
 import Header from '../components/Header';
-import Movie from '../components/Movie';
+import MovieHero from '../components/MovieHero';
+
 
 const Movies = () => {
   return (
     <div>
       <Header />
-      <Movie />
+      <MovieHero />
     </div>
   );
 };
