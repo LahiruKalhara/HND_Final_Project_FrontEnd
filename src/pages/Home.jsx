@@ -5,6 +5,7 @@ import TrendingMovies from '../components/TrendingMovies';
 import TheatreInfo from '../components/TheatreInfo';
 import Footer from '../components/Footer';
 import Feedback from '../components/Feedback';
+import Test from '../components/Test';
 
 const Home = () => {
   return (
@@ -14,7 +15,9 @@ const Home = () => {
       <TrendingMovies />
       <TheatreInfo />
       <Feedback />
+      <Test />
       <Footer />
+
     </div>
   );
 };
