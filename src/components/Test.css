@@ -1,5 +1,6 @@
 .Texts{
     color: brown;
     text-align: center;
+    background: linear-gradient(to right, black, rgb(1, 0, 48));
 }
 
