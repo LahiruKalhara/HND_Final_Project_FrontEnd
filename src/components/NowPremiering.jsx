@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, EffectCoverflow } from "swiper/modules";
 import axios from "axios";
 import "swiper/css";
-import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
-import "./NowPremiering.css";
+import "swiper/css/effect-coverflow";
+import "aos/dist/aos.css"; // Import AOS CSS
+import AOS from "aos"; // Import AOS library
+import "./NowPremiering.css"; 
 
 const NowPremiering = () => {
   const [movies, setMovies] = useState([]);
@@ -20,11 +22,50 @@ const NowPremiering = () => {
       .catch((error) => {
         console.error("Error fetching movies:", error);
       });
+
+    // Initialize AOS animations
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   return (
-    <div>
-      
+    <div className="now-premiering-container">
+      <h2 className="now-premiering-title" data-aos="fade-up">Now Premiering</h2>
+      <Swiper
+        grabCursor={true}
+        slidesPerView={3}  
+        centeredSlides={true}
+        spaceBetween={20} 
+        loop={true}
+        autoplay={{ 
+          delay: 2500, 
+          disableOnInteraction: false,
+          waitForTransition: false 
+        }}
+        navigation={true}
+        effect="coverflow"
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 50,
+          depth: 150,
+          modifier: 1,
+          slideShadows: false,
+        }}
+        modules={[Autoplay, Navigation, EffectCoverflow]}
+        className="now-premiering-slider"
+      >
+        {movies.map((movie) => (
+          <SwiperSlide key={movie.movieID} className="now-premiering-slide">
+            <div className="now-premiering-card" data-aos="zoom-in">
+              <img src={movie.movieUrl} alt={movie.movieName} className="now-premiering-image" />
+              <div className="now-premiering-overlay">
+                <h3 className="now-premiering-movie-title" data-aos="fade-up">{movie.movieName}</h3>
+                <p className="now-premiering-description" data-aos="fade-up">{movie.description}</p>
+                <button className="now-premiering-book-btn" data-aos="fade-up">Book Now</button> 
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
