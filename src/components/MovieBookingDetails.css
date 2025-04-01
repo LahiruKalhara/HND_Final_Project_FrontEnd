@@ -1,0 +1,97 @@
+.movie-booking-details {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    padding: 40px 60px;
+    background: linear-gradient(to right, black, rgb(1, 0, 48));
+    font-size: 1.3em;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  }
+  
+  .combo-box,
+  .date-selection,
+  .time-selection {
+    margin-bottom: 30px;
+  }
+  
+  select {
+    padding: 12px 20px;
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    appearance: none; 
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    margin-left: 2em;
+  }
+  
+  select:focus {
+    border-color: #00b3b3;
+    outline: none;
+  }
+  
+  select option {
+    background-color: #333; 
+    color: #006eff; 
+    padding: 10px; 
+  }
+  
+  select:focus option {
+    background-color: #0b0c1b; 
+  }
+  
+  button {
+    padding: 10px 18px;
+    background-color: #333;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin: 5px;
+    flex: 1;
+  }
+  
+  button:hover {
+    background-color: #00b3b3;
+    border-color: #00b3b3;
+  }
+  
+  button.highlight {
+    background-color: #00b3b3; /* Highlight color */
+    border-color: #00b3b3;
+  }
+  
+  .date-row,
+  .time-row {
+    display: flex;
+    gap: 1em;
+  }
+  
+  .date-btn,
+  .time-btn {
+    padding: 10px 18px;
+    background-color: #333;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+  
+  .date-btn:hover,
+  .time-btn:hover {
+    background-color: #00b3b3;
+  }
+  
+  .date-btn.highlight,
+  .time-btn.highlight {
+    background-color: #00b3b3;
+    border-color: #00b3b3;
+  }
+  
