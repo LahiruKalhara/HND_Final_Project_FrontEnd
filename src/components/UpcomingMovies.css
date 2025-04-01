@@ -1,4 +1,4 @@
-.now-premiering-container {
+.upcoming-movies-container {
     padding: 80px 0;
     text-align: center;
     background: linear-gradient(to right, black, rgb(1, 0, 48));
@@ -6,29 +6,30 @@
     overflow: hidden;
 }
 
-.now-premiering-title {
+.upcoming-movies-title {
     font-size: 2.4rem;
     text-transform: uppercase;
     color: #00bcd4;
     text-shadow: 0 0 20px #00bcd4, 0 0 40px rgba(0, 188, 212, 0.8);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: -60px;
 }
 
-.now-premiering-slider {
+.upcoming-movies-slider {
     width: 90%;
     max-width: 1300px;
     padding-top: 40px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
 }
 
-.now-premiering-slide {
+.upcoming-movies-slide {
     display: flex;
     justify-content: center;
     align-items: center;
     transition: transform 0.4s ease-in-out;
 }
 
-.now-premiering-card {
+.upcoming-movies-card {
     width: 280px; 
     height: 420px;
     position: relative;
@@ -42,20 +43,20 @@
     transform-style: preserve-3d;
 }
 
-.swiper-slide-active .now-premiering-card {
+.swiper-slide-active .upcoming-movies-card {
     transform: scale(1.05); 
     width: 320px; 
     height: 460px;
     box-shadow: 0 0 30px rgba(0, 188, 212, 0.8);
 }
 
-.swiper-slide-prev .now-premiering-card,
-.swiper-slide-next .now-premiering-card {
+.swiper-slide-prev .upcoming-movies-card,
+.swiper-slide-next .upcoming-movies-card {
     transform: scale(0.9);
     opacity: 0.85;
 }
 
-.now-premiering-image {
+.upcoming-movies-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -63,11 +64,11 @@
     transition: transform 0.4s ease-in-out;
 }
 
-.now-premiering-card:hover .now-premiering-image {
+.upcoming-movies-card:hover .upcoming-movies-image {
     transform: scale(1.05) rotateY(5deg);
 }
 
-.now-premiering-overlay {
+.upcoming-movies-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -80,24 +81,24 @@
     transition: opacity 0.3s ease-in-out;
 }
 
-.now-premiering-card:hover .now-premiering-overlay {
+.upcoming-movies-card:hover .upcoming-movies-overlay {
     opacity: 1;
 }
 
-.now-premiering-movie-title {
+.upcoming-movies-movie-title {
     font-size: 1.5rem;
     font-weight: bold;
     color: #00bcd4;
     text-shadow: 0 0 10px #00bcd4, 0 0 20px rgba(0, 188, 212, 0.7);
 }
 
-.now-premiering-description {
+.upcoming-movies-description {
     font-size: 1rem;
     margin-top: 10px;
     opacity: 0.8;
 }
 
-.now-premiering-book-btn {
+.upcoming-movies-book-btn {
     margin-top: 12px;
     padding: 12px 20px;
     background: linear-gradient(45deg, rgb(1, 0, 48), #00bcd4);
@@ -112,6 +113,6 @@
     box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
 }
 
-.now-premiering-book-btn:hover {
+.upcoming-movies-book-btn:hover {
     box-shadow: 0 0 25px #00bcd4, 0 0 50px rgba(0, 188, 212, 0.7);
 }
