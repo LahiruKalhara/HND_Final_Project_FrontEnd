@@ -4,6 +4,7 @@ import MovieHero from '../components/MovieHero';
 import NowPremiering from '../components/NowPremiering';
 import UpcomingMovies from '../components/UpcomingMovies';
 import Footer from '../components/Footer';
+import LatestMovies from '../components/LatestMovies';
 
 const Movies = () => {
   return (
@@ -11,6 +12,7 @@ const Movies = () => {
       <Header />
       <MovieHero />
       <NowPremiering />
+      <LatestMovies />
       <UpcomingMovies/>
       <Footer />
     </div>
