@@ -69,7 +69,6 @@ const Feedback = () => {
       review: "A great place to catch the latest releases. Comfortable and modern!",
       rating: 4,
     },
-    // Additional reviews for the second row
     {
       name: "Mia Brown",
       review: "Great location and great seats. Would love to come back!",

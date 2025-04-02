@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // Don't forget to import AOS styles
+import 'aos/dist/aos.css'; 
 import "./TheatreInfo.css";
 import theatre1v1 from "../assets/theatre1version1.jpg";
 import theatre1v2 from "../assets/theatre1version2.jpg";

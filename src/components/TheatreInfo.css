@@ -80,7 +80,7 @@
       box-shadow: 0 0 0px rgba(0, 188, 212, 0);
     }
     100% {
-      box-shadow: 0 0 80px rgba(0, 188, 212, 1); /* Brighter glow */
+      box-shadow: 0 0 80px rgba(0, 188, 212, 1); 
     }
   }
   

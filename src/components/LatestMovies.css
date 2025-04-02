@@ -34,13 +34,13 @@
     position: relative;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, filter 0.3s ease-in-out;
     cursor: pointer;
-    height: 400px; /* Keeps the real ratio but with a reasonable height */
+    height: 400px; 
 }
 
 .latest-movie-card:hover {
-    transform: scale(1.05) rotateY(3deg) rotateX(3deg); /* Adds slight tilt effect */
+    transform: scale(1.05) rotateY(3deg) rotateX(3deg); 
     box-shadow: 0 0 40px rgba(0, 188, 212, 0.8);
-    filter: brightness(1.2); /* Slightly brightens the card on hover */
+    filter: brightness(1.2); 
 }
 
 .latest-movie-image {
@@ -60,12 +60,12 @@
     padding: 15px;
     color: white;
     text-align: center;
-    opacity: 0; /* Hide initially */
+    opacity: 0; 
     transition: opacity 0.3s ease-in-out;
 }
 
 .latest-movie-card:hover .latest-movie-overlay {
-    opacity: 1; /* Fade in overlay on hover */
+    opacity: 1;
 }
 
 .latest-movie-title {

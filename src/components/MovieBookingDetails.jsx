@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './MovieBookingDetails.css';
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 
 const MovieBookingDetails = () => {
-  // State for selected movie, date, and time
   const [selectedMovie, setSelectedMovie] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -25,7 +24,7 @@ const MovieBookingDetails = () => {
   const times = ['10:00 AM', '1:00 PM', '4:00 PM', '7:00 PM'];
 
   useEffect(() => {
-    AOS.init(); // Initialize AOS
+    AOS.init(); 
   }, []);
 
   return (

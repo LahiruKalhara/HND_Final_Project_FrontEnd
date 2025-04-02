@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import MovieBookingDetails from '../components/MovieBookingDetails';
 import SeatSelection from '../components/SeatSelection';
+import Footer from '../components/Footer';
 
 
 const Booking = () => {
@@ -10,6 +11,7 @@ const Booking = () => {
       <Header />
       <MovieBookingDetails />
       <SeatSelection />
+      <Footer />
     </div>
   );
 };

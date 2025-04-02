@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import './SeatSelection.css';
 
 const SeatSelection = () => {
-  const rows = 12; // Number of rows
-  const colsPerSide = 15; // 15 seats per side
+  const rows = 12; 
+  const colsPerSide = 15; 
   const [selectedSeats, setSelectedSeats] = useState([]);
 
-  // Generate seat labels (e.g., A1, A2... L30)
   const getSeatLabel = (row, col, side) => {
     return `${String.fromCharCode(65 + row)}${side === 'L' ? col + 1 : col + 16}`;
   };
@@ -18,12 +17,11 @@ const SeatSelection = () => {
   };
 
   return (
-    <div className="seat-selection" data-aos="fade-up">
-      <div className="screen">SCREEN</div>
-      <div className="seat-grid">
+    <div className="seat-selection">
+      <div className="screen"  data-aos="fade-up">SCREEN</div>
+      <div className="seat-grid"  data-aos="fade-up">
         {Array.from({ length: rows }).map((_, rowIndex) => (
           <div key={rowIndex} className="seat-row">
-            {/* Left Side Seats */}
             <div className="seat-side">
               {Array.from({ length: colsPerSide }).map((_, colIndex) => {
                 const seat = getSeatLabel(rowIndex, colIndex, 'L');
@@ -39,10 +37,8 @@ const SeatSelection = () => {
               })}
             </div>
 
-            {/* Middle Walkway */}
             <div className="walkway"></div>
 
-            {/* Right Side Seats */}
             <div className="seat-side">
               {Array.from({ length: colsPerSide }).map((_, colIndex) => {
                 const seat = getSeatLabel(rowIndex, colIndex, 'R');

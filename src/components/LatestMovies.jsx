@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
-import "aos/dist/aos.css"; // Import AOS CSS
-import AOS from "aos"; // Import AOS library
-import "./LatestMovies.css"; // Style for the grid
+import "aos/dist/aos.css"; 
+import AOS from "aos"; 
+import "./LatestMovies.css";
 
 const LatestMovies = () => {
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     axios
@@ -18,9 +20,12 @@ const LatestMovies = () => {
         console.error("Error fetching movies:", error);
       });
 
-    // Initialize AOS animations
     AOS.init({ duration: 1000, once: true });
   }, []);
+
+  const handleBooking = (movieID) => {
+    navigate(`/booking?movieID=${movieID}`);
+  };
 
   return (
     <div className="latest-movies-container">
@@ -31,7 +36,12 @@ const LatestMovies = () => {
             <img src={movie.movieUrl} alt={movie.movieName} className="latest-movie-image" />
             <div className="latest-movie-overlay">
               <h3 className="latest-movie-title">{movie.movieName}</h3>
-              <button className="latest-movie-book-btn">Book Now</button>
+              <button 
+                className="latest-movie-book-btn" 
+                onClick={() => handleBooking(movie.movieID)}
+              >
+                Book Now
+              </button>
             </div>
           </div>
         ))}

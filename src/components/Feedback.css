@@ -1,6 +1,6 @@
 .feedback-section {
   padding: 4em 2em;
-  background: linear-gradient(to right, black, rgb(1, 0, 48)); /* Keep background as per theme */
+  background: linear-gradient(to right, black, rgb(1, 0, 48)); 
   color: white;
   text-align: center;
   position: relative;
@@ -68,13 +68,12 @@
   opacity: 0.9;
 }
 
-/* Slide left animation */
 @keyframes slide-left {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* Move the reviews left to show new ones */
+    transform: translateX(-50%); 
   }
 }
 
@@ -84,11 +83,10 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(50%); /* Move the reviews right to show new ones */
+    transform: translateX(50%); 
   }
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
   .feedback-cards {
     flex-direction: column;

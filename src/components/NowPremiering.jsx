@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, EffectCoverflow } from "swiper/modules";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-import "aos/dist/aos.css"; // Import AOS CSS
-import AOS from "aos"; // Import AOS library
+import "aos/dist/aos.css"; 
+import AOS from "aos";
 import "./NowPremiering.css"; 
 
 const NowPremiering = () => {
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate(); // Initialize navigation function
 
   useEffect(() => {
     axios
@@ -23,9 +25,12 @@ const NowPremiering = () => {
         console.error("Error fetching movies:", error);
       });
 
-    // Initialize AOS animations
     AOS.init({ duration: 1000, once: true });
   }, []);
+
+  const handleBooking = (movieID) => {
+    navigate(`/booking?movieID=${movieID}`);
+  };
 
   return (
     <div className="now-premiering-container">
@@ -60,7 +65,13 @@ const NowPremiering = () => {
               <div className="now-premiering-overlay">
                 <h3 className="now-premiering-movie-title" data-aos="fade-up">{movie.movieName}</h3>
                 <p className="now-premiering-description" data-aos="fade-up">{movie.description}</p>
-                <button className="now-premiering-book-btn" data-aos="fade-up">Book Now</button> 
+                <button 
+                  className="now-premiering-book-btn" 
+                  data-aos="fade-up"
+                  onClick={() => handleBooking(movie.movieID)}
+                >
+                  Book Now
+                </button> 
               </div>
             </div>
           </SwiperSlide>
