@@ -1,0 +1,37 @@
+.preview-3d-wrapper {
+    background: radial-gradient(ellipse at center, rgba(5, 5, 25, 0.95), #000);
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  
+  .preview-3d {
+    width: 90vw;
+    height: 75vh;
+    border: 2px solid rgba(0, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+    overflow: hidden;
+  }
+  
+  .close-preview2 {
+    height: 2em;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #00ffff;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #00ffff;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  
+  .close-preview2:hover {
+    background: #00ffff;
+    color: #000;
+    box-shadow: 0 0 12px #00ffff;
+  }
+  
