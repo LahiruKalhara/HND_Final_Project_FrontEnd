@@ -95,3 +95,35 @@
     border-color: #00b3b3;
   }
   
+
+  .seat-selection2 input {
+    padding: 10px;
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-size: 20px;
+    margin-left: 2em;
+    transition: all 0.3s ease;
+  }
+  
+  .total-price {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .seat-selection2{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 1.3em;
+  }
+  
+  .Seat-selection-container{
+    margin-top: 3em;
+    display: flex;
+    gap: 6em;
+  }
