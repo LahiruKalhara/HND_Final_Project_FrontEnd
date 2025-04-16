@@ -1,0 +1,53 @@
+.booked-container {
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(to right, black, rgb(1, 0, 48));
+    color: #fff;
+    text-align: center;
+  }
+  
+  .no-tickets {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+  }
+  
+  .tickets-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .ticket-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .ticket-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .ticket-card h2 {
+    color: #00f7ff;
+    margin-bottom: 1rem;
+  }
+  
+  .cancel-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+  }
+  
+  .cancel-btn:hover {
+    background: #cc0000;
+  }
+  

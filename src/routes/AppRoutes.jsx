@@ -6,6 +6,7 @@ import Booking from "../pages/Booking";
 import ContactUs from "../pages/ContactUs";
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import BookedTickets from '../pages/BookedTickets';
 
 
 const AppRoutes = () => {
@@ -18,6 +19,7 @@ const AppRoutes = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/booked-tickets" element={<BookedTickets />} />
       </Routes>
     </Router>
   );
