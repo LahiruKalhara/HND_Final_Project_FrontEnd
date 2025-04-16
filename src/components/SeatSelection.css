@@ -138,3 +138,48 @@
     align-items: center;
     margin-top: 2em;
   }
+
+  .seat.booked {
+    background: linear-gradient(to bottom, #ff0000, #a30000);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: rgb(255, 255, 255);
+    opacity: 0.9;
+  }
+  
+  .seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+  
+  .seat-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid white;
+  }
+  
+  .seat-dot.available {
+    background-color: black;
+  }
+  
+  .seat-dot.booked {
+    background-color: red;
+    border: none;
+  }
+  
+  .seat-dot.selected {
+    background-color: #00d4ff;
+    border: none;
+  }
+  
