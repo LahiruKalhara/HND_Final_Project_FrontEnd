@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Hero.css";
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   useEffect(() => {
-   
+
     AOS.init({
       duration: 1000,
-      once: true, 
+      once: true,
     });
   }, []);
 
@@ -29,7 +30,9 @@ const Hero = () => {
         </h1>
         <p data-aos="fade-up">Experience the Future of Cinema with Ultra HD & Immersive Sound</p>
         <button className="hero-btn" data-aos="fade-up">
-          Book Now
+          <Link to="/booking" style={{ textDecoration: 'none', color: 'inherit' }}>
+            Book Now
+          </Link>
         </button>
       </div>
     </div>

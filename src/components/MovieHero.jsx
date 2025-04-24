@@ -3,6 +3,7 @@ import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import './MovieHero.css';
+import { Link } from 'react-router-dom';
 
 const MovieHero = () => {
     const [movie, setMovie] = useState(null);
@@ -46,7 +47,11 @@ const MovieHero = () => {
                         </p>
 
                         <div className="cta-buttons">
-                            <button className="cta-button" data-aos="fade-up" data-aos-delay="800">Book Now</button>
+                            <button className="cta-button" data-aos="fade-up" data-aos-delay="800">
+                                <Link to={`/booking?movieID=${movie.movieID}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    Book Now
+                                </Link>
+                            </button>
                             <button className="cta-button" data-aos="fade-up" data-aos-delay="1000">Watch Trailer</button>
                         </div>
                     </div>

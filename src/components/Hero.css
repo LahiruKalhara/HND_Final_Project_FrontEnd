@@ -107,7 +107,7 @@
   
   .hero-btn:hover {
     transition: transform 1s ease, box-shadow 1s ease;
-    transform: scale(1.1);
+    transform: scale(1);
     box-shadow: 0 0 150px #00bcd4, 0 0 25px rgba(0, 188, 212, 0.5);
   }
   
