@@ -1,0 +1,119 @@
+.manage-messages {
+    padding: 20px;
+    background-color: #25233a;
+    color: white;
+}
+
+.manage-messages h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.manage-messages-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.manage-messages-table th,
+.manage-messages-table td {
+    border: 1px solid #333333;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.manage-messages-table th {
+    background-color: #231e31;
+    color: #ccc;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.manage-messages-table td {
+    background-color: #1b1929;
+    color: white;
+}
+
+.manage-messages-table tr:nth-child(even) {
+    background-color: #151515;
+}
+
+.manage-messages-table input[type="text"],
+.manage-messages-table input[type="email"],
+.manage-messages-table textarea {
+    background-color: #262626;
+    border: 1px solid #555;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    width: 100%;
+    font-size: 12px;
+}
+
+button {
+    padding: 6px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:focus {
+    outline: none;
+}
+
+.manage-messages-table button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.manage-messages-table .delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.manage-messages-table .delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.manage-messages-table .edit-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.manage-messages-table .edit-btn:hover {
+    background-color: #1976D2;
+}
+
+.save-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #1976D2;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}

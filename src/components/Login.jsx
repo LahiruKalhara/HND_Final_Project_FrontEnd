@@ -13,6 +13,21 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    // ✅ Check for hardcoded admin first
+    if (email === 'Lahirukalhara@gmail.com' && password === '82901317_aA') {
+      const adminUser = {
+        userName: 'Admin',
+        userEmail: email,
+        userRole: 'admin',
+      };
+      login(adminUser);
+      alert('Welcome, Admin!');
+      navigate('/adminpanel');
+      return;
+    }
+
+    // ❌ If not admin, then check from the database
     try {
       const response = await axios.get('http://localhost:8080/api/users/View');
       const user = response.data.find(
@@ -38,8 +53,18 @@ const Login = () => {
       <div className="milano-auth-container">
         <form onSubmit={handleLogin} className="milano-auth-form">
           <h2>Login</h2>
-          <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
           <button type="submit" className="milano-auth-btn">Login</button>
           <p className="milano-auth-switch">
             Don't have an account? <Link to="/signup">Sign up</Link>

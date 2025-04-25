@@ -1,0 +1,99 @@
+.manage-tickets {
+    padding: 20px;
+    background-color: #25233a;
+    color: white;
+  }
+  
+  .manage-tickets h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .manage-tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+  
+  .manage-tickets-table th,
+  .manage-tickets-table td {
+    border: 1px solid #333333;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  
+  .manage-tickets-table th {
+    background-color: #231e31;
+    color: #ccc;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .manage-tickets-table td {
+    background-color: #1b1929;
+    color: white;
+  }
+  
+  .manage-tickets-table tr:nth-child(even) {
+    background-color: #151515;
+  }
+  
+  .manage-tickets-table input[type="text"],
+  .manage-tickets-table input[type="number"] {
+    background-color: #262626;
+    border: 1px solid #555;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    width: 100%;
+    font-size: 12px;
+  }
+  
+  button {
+    padding: 6px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  .manage-tickets-table .edit-btn {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .manage-tickets-table .edit-btn:hover {
+    background-color: #1976D2;
+  }
+  
+  .manage-tickets-table .save-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .manage-tickets-table .save-btn:hover {
+    background-color: #388E3C;
+  }
+  
+  .manage-tickets-table .delete-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .manage-tickets-table .delete-btn:hover {
+    background-color: #d32f2f;
+  }
+  
