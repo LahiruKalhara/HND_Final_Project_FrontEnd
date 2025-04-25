@@ -14,7 +14,6 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // ✅ Check for hardcoded admin first
     if (email === 'Lahirukalhara@gmail.com' && password === '82901317_aA') {
       const adminUser = {
         userName: 'Admin',
@@ -27,7 +26,6 @@ const Login = () => {
       return;
     }
 
-    // ❌ If not admin, then check from the database
     try {
       const response = await axios.get('http://localhost:8080/api/users/View');
       const user = response.data.find(
