@@ -1,6 +1,6 @@
 .manage-users {
     padding: 20px;
-    background-color: #25233a;
+    background: linear-gradient(to right, rgb(1, 0, 14), rgb(1, 0, 48));
     color: white;
   }
   
@@ -27,7 +27,7 @@
   }
   
   .manage-users-table th {
-    background-color: #231e31;
+    background: linear-gradient(to right, rgba(2, 0, 20, 0.459),  rgba(2, 0, 20, 0.459));
     color: #ccc;
     font-weight: bold;
     text-transform: uppercase;
@@ -116,4 +116,68 @@
   .delete-btn:hover {
     background-color: darkred;
   }
+  
+  .search-bar-container {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .search-bar {
+    padding: 10px 30px 10px 15px; 
+    font-size: 16px;
+    width: 100%;
+    border-radius: 25px;
+    border: 1px solid #444;
+    background-color: #232329;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .search-bar:focus {
+    border-color: #4c56af;
+    background-color: #444;
+  }
+  
+  .search-icon {
+    position: absolute;
+
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bbb;
+    font-size: 20px;
+  }
+  
+  .search-bar-container input::placeholder {
+    color: #bbb;
+  }
+  
+  .manage-users-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .manage-users-table th,
+  .manage-users-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+  }
+  
+  .manage-users-table th {
+    background-color: #222;
+  }
+  
+  .manage-users-table tr:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+  
+  .manage-users-table tr:hover {
+    background-color: #333;
+  }
+  
   

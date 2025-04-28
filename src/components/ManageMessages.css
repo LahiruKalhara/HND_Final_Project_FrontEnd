@@ -1,6 +1,6 @@
 .manage-messages {
     padding: 20px;
-    background-color: #25233a;
+    background: linear-gradient(to right, rgb(1, 0, 12), rgb(1, 0, 48));
     color: white;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .manage-messages-table th {
-    background-color: #231e31;
+    background-color: #0a00253d;
     color: #ccc;
     font-weight: bold;
     text-transform: uppercase;

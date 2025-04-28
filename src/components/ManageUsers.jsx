@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { FaSearch } from 'react-icons/fa'; // Search icon from react-icons
 import './ManageUsers.css';
 
 function ManageUsers() {
   const [users, setUsers] = useState([]);
   const [editedUser, setEditedUser] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -22,6 +24,17 @@ function ManageUsers() {
 
     fetchUsers();
   }, []);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredUsers = users.filter((user) => {
+    return (
+      user.userName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      user.userEmail.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
 
   const handleEdit = (user) => {
     setEditedUser({ ...user });
@@ -76,6 +89,19 @@ function ManageUsers() {
   return (
     <div className="manage-users">
       <h3>Manage Users</h3>
+
+      {/* Search Bar */}
+      <div className="search-bar-container">
+        <input
+          type="text"
+          placeholder="Search Users"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="search-bar"
+        />
+        <FaSearch className="search-icon" />
+      </div>
+
       <table className="manage-users-table">
         <thead>
           <tr>
@@ -89,56 +115,87 @@ function ManageUsers() {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.userID}>
-              <td>{user.userID}</td>
-              <td>
-                {editedUser && editedUser.userID === user.userID ? (
-                  <input type="text" name="userName" value={editedUser.userName} onChange={handleChange} />
-                ) : (
-                  user.userName
-                )}
-              </td>
-              <td>
-                {editedUser && editedUser.userID === user.userID ? (
-                  <input type="email" name="userEmail" value={editedUser.userEmail} onChange={handleChange} />
-                ) : (
-                  user.userEmail
-                )}
-              </td>
-              <td>
-                {editedUser && editedUser.userID === user.userID ? (
-                  <input type="text" name="userTelephone" value={editedUser.userTelephone} onChange={handleChange} />
-                ) : (
-                  user.userTelephone
-                )}
-              </td>
-              <td>
-                {editedUser && editedUser.userID === user.userID ? (
-                  <input type="text" name="userAddress" value={editedUser.userAddress} onChange={handleChange} />
-                ) : (
-                  user.userAddress
-                )}
-              </td>
-              <td>
-                {editedUser && editedUser.userID === user.userID ? (
-                  <input type="text" name="userRole" value={editedUser.userRole} onChange={handleChange} />
-                ) : (
-                  user.userRole
-                )}
-              </td>
-              <td>
-                {editedUser && editedUser.userID === user.userID ? (
-                  <button className="save-btn" onClick={handleSave}>Save</button>
-                ) : (
-                  <>
-                    <button className="edit-btn" onClick={() => handleEdit(user)}>Edit</button>
-                    <button className="delete-btn" onClick={() => handleDelete(user.userID)}>Delete</button>
-                  </>
-                )}
-              </td>
+          {filteredUsers.length > 0 ? (
+            filteredUsers.map((user) => (
+              <tr key={user.userID}>
+                <td>{user.userID}</td>
+                <td>
+                  {editedUser && editedUser.userID === user.userID ? (
+                    <input
+                      type="text"
+                      name="userName"
+                      value={editedUser.userName}
+                      onChange={handleChange}
+                    />
+                  ) : (
+                    user.userName
+                  )}
+                </td>
+                <td>
+                  {editedUser && editedUser.userID === user.userID ? (
+                    <input
+                      type="email"
+                      name="userEmail"
+                      value={editedUser.userEmail}
+                      onChange={handleChange}
+                    />
+                  ) : (
+                    user.userEmail
+                  )}
+                </td>
+                <td>
+                  {editedUser && editedUser.userID === user.userID ? (
+                    <input
+                      type="text"
+                      name="userTelephone"
+                      value={editedUser.userTelephone}
+                      onChange={handleChange}
+                    />
+                  ) : (
+                    user.userTelephone
+                  )}
+                </td>
+                <td>
+                  {editedUser && editedUser.userID === user.userID ? (
+                    <input
+                      type="text"
+                      name="userAddress"
+                      value={editedUser.userAddress}
+                      onChange={handleChange}
+                    />
+                  ) : (
+                    user.userAddress
+                  )}
+                </td>
+                <td>
+                  {editedUser && editedUser.userID === user.userID ? (
+                    <input
+                      type="text"
+                      name="userRole"
+                      value={editedUser.userRole}
+                      onChange={handleChange}
+                    />
+                  ) : (
+                    user.userRole
+                  )}
+                </td>
+                <td>
+                  {editedUser && editedUser.userID === user.userID ? (
+                    <button className="save-btn" onClick={handleSave}>Save</button>
+                  ) : (
+                    <>
+                      <button className="edit-btn" onClick={() => handleEdit(user)}>Edit</button>
+                      <button className="delete-btn" onClick={() => handleDelete(user.userID)}>Delete</button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="7">No users found</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

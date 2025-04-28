@@ -4,6 +4,7 @@ import './ManageMessages.css';
 function ManageMessages() {
   const [messages, setMessages] = useState([]);
   const [editedMessage, setEditedMessage] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(''); // Added state for search query
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -73,9 +74,34 @@ function ManageMessages() {
     }
   };
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredMessages = messages.filter((message) => {
+    return (
+      message.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      message.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      message.message.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
+
   return (
     <div className="manage-messages">
       <h3>Manage Messages</h3>
+
+      {/* Search Bar */}
+      <div className="search-bar-container">
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Search messages..."
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+        <i className="search-icon fa fa-search"></i>
+      </div>
+
       <table className="manage-messages-table">
         <thead>
           <tr>
@@ -89,7 +115,7 @@ function ManageMessages() {
           </tr>
         </thead>
         <tbody>
-          {messages.map((message) => (
+          {filteredMessages.map((message) => (
             <tr key={message.id}>
               <td>{message.id}</td>
               <td>

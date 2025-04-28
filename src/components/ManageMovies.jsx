@@ -6,6 +6,7 @@ function ManageMovies() {
   const [showtimes, setShowtimes] = useState([]);
   const [editedMovie, setEditedMovie] = useState(null);
   const [editedShowtimes, setEditedShowtimes] = useState({});
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchMoviesAndShowtimes = async () => {
@@ -65,14 +66,14 @@ function ManageMovies() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editedMovie),
       });
-  
+
       if (movieResponse.ok) {
         alert('Movie updated successfully');
         setMovies(movies.map(m => m.movieID === editedMovie.movieID ? editedMovie : m));
       } else {
         alert('Failed to update movie');
       }
-  
+
       const updatedShowtimesArray = Object.entries(editedShowtimes).map(([showtimeID, values]) => ({
         showtimeID: parseInt(showtimeID),
         showDate: values.showDate,
@@ -88,7 +89,7 @@ function ManageMovies() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedShowtimesArray),
       });
-  
+
       if (showtimeResponse.ok) {
         alert('Showtimes updated successfully');
         const updated = await showtimeResponse.json();
@@ -98,7 +99,7 @@ function ManageMovies() {
       } else {
         alert('Failed to update showtimes');
       }
-  
+
       setEditedMovie(null);
       setEditedShowtimes({});
     } catch (error) {
@@ -106,7 +107,6 @@ function ManageMovies() {
       console.error(error);
     }
   };
-  
 
   const handleDelete = async (movieID) => {
     try {
@@ -129,9 +129,27 @@ function ManageMovies() {
     return showtimes.filter(st => st.movie.movieID === movieID);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredMovies = movies.filter(movie =>
+    movie.movieName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="manage-movies">
       <h3>Manage Movies</h3>
+
+
+      <input
+        type="text"
+        placeholder="Search movies by name..."
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className="search-bar2"
+      />
+
       <table className="manage-movies-table">
         <thead>
           <tr>
@@ -141,7 +159,7 @@ function ManageMovies() {
           </tr>
         </thead>
         <tbody>
-          {movies.map((movie) => {
+          {filteredMovies.map((movie) => {
             const movieShowtimes = getShowtimesForMovie(movie.movieID);
             return (
               <React.Fragment key={movie.movieID}>

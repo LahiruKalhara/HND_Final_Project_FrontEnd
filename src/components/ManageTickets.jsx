@@ -4,6 +4,7 @@ import './ManageTickets.css';
 function ManageTickets() {
   const [tickets, setTickets] = useState([]);
   const [editedTicket, setEditedTicket] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchTickets = async () => {
@@ -73,9 +74,24 @@ function ManageTickets() {
     }
   };
 
+  const filteredTickets = tickets.filter(ticket =>
+    ticket.userID.toString().includes(searchQuery)
+  );
+
   return (
     <div className="manage-tickets">
       <h3>Manage Tickets</h3>
+      
+      <div className="search-bar-container">
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Search by User ID"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
       <table className="manage-tickets-table">
         <thead>
           <tr>
@@ -92,7 +108,7 @@ function ManageTickets() {
           </tr>
         </thead>
         <tbody>
-          {tickets.map((ticket) => (
+          {filteredTickets.map((ticket) => (
             <tr key={ticket.ticketID}>
               <td>{ticket.ticketID}</td>
               <td>{ticket.movieID}</td>
