@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import AOS from "aos";
@@ -6,50 +6,102 @@ import "aos/dist/aos.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./TrendingMovies.css";
+import { useAuth } from "../context/AuthContext";
 
-const trendingMovies = [
-  { title: "Captain America : Brave New World", rating: "8.9", image: "https://lumiere-a.akamaihd.net/v1/images/au_movies_marvelstudios_captainamerica_bravenewworld_pa_08035399.jpeg", trailer: "https://youtu.be/1pHDWnXmK7Y?si=9toPYO-RGGVUbOqq" },
-  { title: "Moana 2", rating: "8.5", image: "https://m.media-amazon.com/images/M/MV5BZDUxNThhYTUtYjgxNy00MGQ4LTgzOTEtZjg1YTU5NTcwNThlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg", trailer: "https://youtu.be/hDZ7y8RP5HE?si=AoaarE_wPQMw1aYp" },
-  { title: "The Gorge", rating: "8.5", image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVhs0zWJkL9afwN2gqJJ3vtmX4yJVAeZchddbahTVkHzCi9fyKtXwj0OEcznWUsFRn_VKd", trailer: "https://www.youtube.com/watch?v=rUSdnuOLebE"},
-  { title: "Sonic the Hedgehog 3", rating: "9.0", image: "https://resizing.flixster.com/5yCDU3YndW2EIWaEwH1FydaMwZI=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2E0MGM5YTk5LTdhY2UtNGYzNS04NGVmLTJlNjRkYjljNjQ4ZS5qcGc=", trailer: "https://youtu.be/qSu6i2iFMO0?si=Ui28n2NPV045lwAR" },
-  { title: "Mufasa: The Lion King", rating: "9.2", image: "https://m.media-amazon.com/images/I/A1z543w2WVL._AC_UF1000,1000_QL80_.jpg", trailer: "https://youtu.be/o17MF9vnabg?si=nLlfM8S-fLDZHet8" },
-];
 
 const TrendingMovies = () => {
+  const [suggestedMovies, setSuggestedMovies] = useState([]);
+  const { user } = useAuth();
+
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  useEffect(() => {
+    const fetchSuggestedMovies = async () => {
+      const userId = user?.userID;
+      console.log("🔥 TrendingMovies mounted. User ID:", userId);
+    
+      if (!userId) {
+        console.warn("⚠️ No user ID found. Skipping genre prediction.");
+        return;
+      }
+    
+      try {
+        const genreResponse = await fetch(`http://localhost:5001/predict_genre?user_id=${userId}`);
+        const genreData = await genreResponse.json();
+        const predictedGenre = genreData.predicted_genre;
+        console.log("🎯 Predicted Genre:", predictedGenre);
+    
+        if (!predictedGenre || typeof predictedGenre !== "string") {
+          console.warn("⚠️ Invalid predicted genre. Skipping filtering.");
+          return;
+        }
+    
+        const movieResponse = await fetch("http://localhost:8080/api/movies/View");
+        const movies = await movieResponse.json();
+        console.log("🎬 All Movies Fetched:", movies);
+    
+        const filtered = movies.filter(movie =>
+          movie.movieType && typeof movie.movieType === "string" &&
+          movie.movieType.toLowerCase().includes(predictedGenre.toLowerCase())
+        );
+        console.log("✅ Filtered Movies:", filtered);
+        
+    
+        const topFive = filtered.slice(0, 5);
+        console.log("🥇 Top 5 Suggested Movies:", topFive);
+    
+        setSuggestedMovies(topFive);
+      } catch (error) {
+        console.error("❌ Error fetching suggested movies:", error);
+      }
+    };
+
+
+    fetchSuggestedMovies();
+  }, [user]);
+
   return (
     <div className="trending-section">
-      <h2 data-aos="fade-up">Trending Movies</h2>
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        navigation
-        autoplay={{ delay: 3000 }}
-        spaceBetween={20}
-        slidesPerView={3}
-        breakpoints={{
-          900: { slidesPerView: 3 },
-          600: { slidesPerView: 2 },
-          300: { slidesPerView: 1 }
-        }}
-      >
-        {trendingMovies.map((movie, index) => (
-          <SwiperSlide key={index}>
-            <div className="movie-card" data-aos="fade-up">
-              <img src={movie.image} alt={movie.title} />
-              <div className="overlay" data-aos="fade-up" data-aos-delay="200">
-                <h3>{movie.title}</h3>
-                <p>⭐ {movie.rating}</p>
-                <a href={movie.trailer} target="_blank" rel="noopener noreferrer" className="watch-btn">
-                  ▶ Watch Trailer
-                </a>
+      <h2 data-aos="fade-up">Suggested Movies</h2>
+      {suggestedMovies.length > 0 ? (
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          navigation
+          autoplay={{ delay: 3000 }}
+          spaceBetween={20}
+          slidesPerView={3}
+          breakpoints={{
+            900: { slidesPerView: 3 },
+            600: { slidesPerView: 2 },
+            300: { slidesPerView: 1 },
+          }}
+        >
+          {suggestedMovies.map((movie, index) => (
+            <SwiperSlide key={index}>
+              <div className="movie-card" data-aos="fade-up">
+                <img src={movie.movieUrl} alt={movie.movieName} />
+                <div className="overlay" data-aos="fade-up" data-aos-delay="200">
+                  <h3>{movie.movieName}</h3>
+                  <p>⭐ {movie.rating}</p>
+                  <a
+                    href={movie.trailerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="watch-btn"
+                  >
+                    ▶ Watch Trailer
+                  </a>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <p data-aos="fade-up">No suggested movies found or user not logged in.</p>
+      )}
     </div>
   );
 };

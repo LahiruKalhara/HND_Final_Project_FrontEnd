@@ -13,7 +13,6 @@ function AdminPanel() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  // 🔒 Access control: Redirect if not admin
   useEffect(() => {
     if (!user || user.userRole !== 'admin') {
       alert("Access denied. You must be an admin to view this page.");
