@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import AppRoutes from './routes/AppRoutes'
+import Chatbot from './components/Chatbot'
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   return (
     <>
     <AppRoutes/>
+    <Chatbot />
     </>
   )
 }
