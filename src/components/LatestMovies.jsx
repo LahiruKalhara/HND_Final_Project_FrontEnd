@@ -1,27 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "aos/dist/aos.css"; 
-import AOS from "aos"; 
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./LatestMovies.css";
+
+import { useAuth } from "../context/AuthContext"; 
 
 const LatestMovies = () => {
   const [movies, setMovies] = useState([]);
-  const navigate = useNavigate(); 
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/movies/View")
-      .then((response) => {
-        const premieringMovies = response.data.filter(movie => movie.status === "Premiering");
-        setMovies(premieringMovies);
-      })
-      .catch((error) => {
-        console.error("Error fetching movies:", error);
-      });
+    const fetchAndSortLatest = async () => {
+      try {
+        const genreRes = await axios.get(`http://localhost:5001/predict_genre?user_id=${user.userID}`);
+        const predictedGenre = genreRes.data.predicted_genre.toLowerCase();
+        console.log("🎯 Predicted genre:", predictedGenre);
 
+        const movieRes = await axios.get("http://localhost:8080/api/movies/View");
+        const premieringMovies = movieRes.data.filter(movie => movie.status === "Premiering");
+        console.log("📽️ Premiering movies:", premieringMovies);
+
+        const sortedMovies = premieringMovies.sort((a, b) => {
+          const aGenres = a.movieType?.toLowerCase().split(',').map(g => g.trim()) || [];
+          const bGenres = b.movieType?.toLowerCase().split(',').map(g => g.trim()) || [];
+
+          const aMatch = aGenres.includes(predictedGenre) ? 1 : 0;
+          const bMatch = bGenres.includes(predictedGenre) ? 1 : 0;
+
+          return bMatch - aMatch;
+        });
+
+        console.log("✅ Sorted latest movies:", sortedMovies);
+        setMovies(sortedMovies);
+      } catch (error) {
+        console.error("🔥 Error fetching latest movies:", error);
+      }
+    };
+
+    fetchAndSortLatest();
     AOS.init({ duration: 1000, once: true });
-  }, []);
+  }, [user]);
 
   const handleBooking = (movieID) => {
     navigate(`/booking?movieID=${movieID}`);
