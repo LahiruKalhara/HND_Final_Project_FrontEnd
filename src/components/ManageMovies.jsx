@@ -8,7 +8,21 @@ function ManageMovies() {
   const [editedShowtimes, setEditedShowtimes] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
 
+  const [newMovie, setNewMovie] = useState({
+    movieName: '',
+    description: '',
+    movieType: '',
+    movieUrl: '',
+    movieDirector: '',
+    movieReleaseDate: '',
+    duration: '',
+    rating: '',
+    language: '',
+    status: ''
+  });
+
   useEffect(() => {
+
     const fetchMoviesAndShowtimes = async () => {
       try {
         const [movieRes, showtimeRes] = await Promise.all([
@@ -31,6 +45,45 @@ function ManageMovies() {
 
     fetchMoviesAndShowtimes();
   }, []);
+
+
+  const handleNewMovieChange = (e) => {
+    const { name, value } = e.target;
+    setNewMovie(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleAddMovie = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/movies/Add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newMovie),
+      });
+
+      if (response.ok) {
+        const added = await response.json();
+        setMovies(prev => [...prev, added]);
+        alert('Movie added successfully');
+        setNewMovie({
+          movieName: '',
+          description: '',
+          movieType: '',
+          movieUrl: '',
+          movieDirector: '',
+          movieReleaseDate: '',
+          duration: '',
+          rating: '',
+          language: '',
+          status: ''
+        });
+      } else {
+        alert('Failed to add movie');
+      }
+    } catch (err) {
+      alert('Error adding movie');
+      console.error(err);
+    }
+  };
 
   const handleEdit = (movie) => {
     setEditedMovie({ ...movie });
@@ -140,6 +193,21 @@ function ManageMovies() {
   return (
     <div className="manage-movies">
       <h3>Manage Movies</h3>
+      <div className="add-movie-form">
+        <div className="add-form-grid">
+          <input type="text" name="movieName" value={newMovie.movieName} onChange={handleNewMovieChange} placeholder="Movie Name" />
+          <input type="text" name="description" value={newMovie.description} onChange={handleNewMovieChange} placeholder="Description" />
+          <input type="text" name="movieType" value={newMovie.movieType} onChange={handleNewMovieChange} placeholder="Type" />
+          <input type="text" name="movieUrl" value={newMovie.movieUrl} onChange={handleNewMovieChange} placeholder="Movie Url" />
+          <input type="text" name="movieDirector" value={newMovie.movieDirector} onChange={handleNewMovieChange} placeholder="Director" />
+          <input type="date" name="movieReleaseDate" value={newMovie.movieReleaseDate} onChange={handleNewMovieChange} />
+          <input type="number" name="duration" value={newMovie.duration} onChange={handleNewMovieChange} placeholder="Duration (min)" />
+          <input type="number" name="rating" value={newMovie.rating} step="0.1" onChange={handleNewMovieChange} placeholder="Rating" />
+          <input type="text" name="language" value={newMovie.language} onChange={handleNewMovieChange} placeholder="Language" />
+          <input type="text" name="status" value={newMovie.status} onChange={handleNewMovieChange} placeholder="Status" />
+          <button className="add-btn" onClick={handleAddMovie}>Add Movie</button>
+        </div>
+      </div>
 
 
       <input
@@ -207,25 +275,25 @@ function ManageMovies() {
                       <strong>Showtimes:</strong>{' '}
                       {editedMovie?.movieID === movie.movieID
                         ? movieShowtimes.map((st) => (
-                            <div key={st.showtimeID} style={{ marginBottom: '4px' }}>
-                              <input
-                                type="date"
-                                value={editedShowtimes[st.showtimeID]?.showDate || ''}
-                                onChange={(e) => handleShowtimeChange(st.showtimeID, 'showDate', e.target.value)}
-                                style={{ marginRight: '8px' }}
-                              />
-                              <input
-                                type="time"
-                                value={editedShowtimes[st.showtimeID]?.showTime || ''}
-                                onChange={(e) => handleShowtimeChange(st.showtimeID, 'showTime', e.target.value)}
-                              />
-                            </div>
-                          ))
+                          <div key={st.showtimeID} style={{ marginBottom: '4px' }}>
+                            <input
+                              type="date"
+                              value={editedShowtimes[st.showtimeID]?.showDate || ''}
+                              onChange={(e) => handleShowtimeChange(st.showtimeID, 'showDate', e.target.value)}
+                              style={{ marginRight: '8px' }}
+                            />
+                            <input
+                              type="time"
+                              value={editedShowtimes[st.showtimeID]?.showTime || ''}
+                              onChange={(e) => handleShowtimeChange(st.showtimeID, 'showTime', e.target.value)}
+                            />
+                          </div>
+                        ))
                         : movieShowtimes.map((st, idx) => (
-                            <span key={idx}>
-                              {st.showDate} @ {st.showTime}{idx < movieShowtimes.length - 1 && ', '}
-                            </span>
-                          ))}
+                          <span key={idx}>
+                            {st.showDate} @ {st.showTime}{idx < movieShowtimes.length - 1 && ', '}
+                          </span>
+                        ))}
                     </td>
                   </tr>
                 )}

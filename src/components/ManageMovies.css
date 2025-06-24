@@ -186,4 +186,37 @@
     background-color: #333;
   }
   
-  
+  .add-movie-form {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #0f0f1a;
+  border-radius: 10px;
+}
+
+.add-movie-form h4 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #00bfff;
+}
+
+.add-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 15px;
+}
+
+.add-form-grid input {
+  background-color: #262626;
+  border: 1px solid #555;
+  padding: 6px;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+}
+
+.add-btn {
+  background-color: #3a9ab7;
+  color: white;
+  font-weight: bold;
+  grid-column: span 2;
+}
