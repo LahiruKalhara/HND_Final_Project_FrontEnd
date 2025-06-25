@@ -46,6 +46,12 @@ function ManageMovies() {
     fetchMoviesAndShowtimes();
   }, []);
 
+  const isShowtimeExpired = (showDate, showTime) => {
+    const now = new Date();
+    const showDateTime = new Date(`${showDate}T${showTime}`);
+    return showDateTime < now;
+  };
+
 
   const handleNewMovieChange = (e) => {
     const { name, value } = e.target;
@@ -289,11 +295,24 @@ function ManageMovies() {
                             />
                           </div>
                         ))
-                        : movieShowtimes.map((st, idx) => (
-                          <span key={idx}>
-                            {st.showDate} @ {st.showTime}{idx < movieShowtimes.length - 1 && ', '}
-                          </span>
-                        ))}
+                        : movieShowtimes.map((st, idx) => {
+                          const expired = isShowtimeExpired(st.showDate, st.showTime);
+                          return (
+                            <span
+                              key={idx}
+                              style={{
+                                color: expired ? 'gray' : 'white',
+                                textDecoration: expired ? 'line-through' : 'none',
+                                marginRight: '6px'
+                              }}
+                            >
+                              {st.showDate} @ {st.showTime}
+                              {expired && <span style={{ color: '#ff5e5e', marginLeft: '4px' }}>⛔ Expired</span>}
+                              {idx < movieShowtimes.length - 1 && ','}
+                            </span>
+                          );
+                        })
+                      }
                     </td>
                   </tr>
                 )}
