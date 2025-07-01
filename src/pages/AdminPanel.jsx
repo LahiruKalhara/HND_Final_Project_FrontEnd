@@ -7,6 +7,10 @@ import ManageMessages from '../components/ManageMessages';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import TotalSalesReport from '../components/TotalSalesReport';
+import SalesPerMovieReport from '../components/SalesPerMovieReport';
+import MostActiveUsersReport from '../components/MostActiveUsersReport';
+import TicketsPerDayReport from '../components/TicketsPerDayReport';
 
 function AdminPanel() {
   const [activeSection, setActiveSection] = useState('ManageUsers');
@@ -30,6 +34,14 @@ function AdminPanel() {
         return <ManageMovies />;
       case 'ManageReviews':
         return <ManageMessages />;
+      case 'TotalSales':
+        return <TotalSalesReport />;
+      case 'SalesPerMovie':
+        return <SalesPerMovieReport />
+      case 'MostActiveUsers':
+        return <MostActiveUsersReport />
+      case 'TicketsPerDay':
+        return <TicketsPerDayReport />
       default:
         return <div><h3>Welcome to the Admin Panel</h3></div>;
     }
@@ -64,6 +76,30 @@ function AdminPanel() {
               onClick={() => setActiveSection('ManageReviews')}
             >
               Manage Messages
+            </li>
+            <li
+              className={activeSection === 'TotalSales' ? 'active' : ''}
+              onClick={() => setActiveSection('TotalSales')}
+            >
+              Total Sales Report
+            </li>
+            <li
+              className={activeSection === 'SalesPerMovie' ? 'active' : ''}
+              onClick={() => setActiveSection('SalesPerMovie')}
+            >
+              Sales Per Movie Report
+            </li>
+            <li
+              className={activeSection === 'MostActiveUsers' ? 'active' : ''}
+              onClick={() => setActiveSection('MostActiveUsers')}
+            >
+              Most Active Users
+            </li>
+            <li
+              className={activeSection === 'TicketsPerDay' ? 'active' : ''}
+              onClick={() => setActiveSection('TicketsPerDay')}
+            >
+              Tickets Per Day Report
             </li>
           </ul>
         </div>
