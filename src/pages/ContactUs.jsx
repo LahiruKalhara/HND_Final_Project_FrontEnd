@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaCommentDots } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import axios from 'axios';
@@ -10,10 +10,16 @@ import { useAuth } from '../context/AuthContext';
 
 const ContactUs = () => {
   const { user } = useAuth(); 
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
+  });
+
+  const [feedbackData, setFeedbackData] = useState({
+    name: '',
+    feedback: ''
   });
 
   useEffect(() => {
@@ -22,6 +28,13 @@ const ContactUs = () => {
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleFeedbackChange = (e) => {
+    setFeedbackData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
     }));
@@ -46,6 +59,19 @@ const ContactUs = () => {
     } catch (error) {
       console.error('Error sending message:', error);
       alert('Something went wrong. Please try again later.');
+    }
+  };
+
+  const handleFeedbackSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post('http://localhost:8080/api/feedback/add', feedbackData);
+      alert('Feedback sent successfully!');
+      setFeedbackData({ name: '', feedback: '' });
+    } catch (error) {
+      console.error('Error sending feedback:', error);
+      alert('Something went wrong while sending feedback.');
     }
   };
 
@@ -118,6 +144,35 @@ const ContactUs = () => {
               ></textarea>
             </div>
             <button type="submit" data-aos="fade-up" data-aos-delay="1000">Send Message</button>
+          </form>
+        </div>
+
+        <div className="feedback-form" data-aos="fade-up" data-aos-delay="1100">
+          <h2>Write Feedback</h2>
+          <form onSubmit={handleFeedbackSubmit}>
+            <div className="input-group" data-aos="fade-up" data-aos-delay="1200">
+              <label htmlFor="feedbackName">Your Name</label>
+              <input
+                type="text"
+                id="feedbackName"
+                name="name"
+                required
+                value={feedbackData.name}
+                onChange={handleFeedbackChange}
+              />
+            </div>
+            <div className="input-group" data-aos="fade-up" data-aos-delay="1300">
+              <label htmlFor="feedback">Your Feedback</label>
+              <textarea
+                id="feedback"
+                name="feedback"
+                rows="4"
+                required
+                value={feedbackData.feedback}
+                onChange={handleFeedbackChange}
+              ></textarea>
+            </div>
+            <button type="submit" data-aos="fade-up" data-aos-delay="1400">Submit Feedback</button>
           </form>
         </div>
       </div>
