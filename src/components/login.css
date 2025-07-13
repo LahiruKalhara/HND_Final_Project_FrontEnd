@@ -1,69 +1,88 @@
 .milano-auth-container {
-    background: linear-gradient(to right, black, rgb(1, 0, 48));
-    color: white;
-    min-height: 100vh;
-    padding-top: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-  
-  .milano-auth-form {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgb(0, 187, 255);
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .milano-auth-form h2 {
-    margin-bottom: 10px;
-    color: #00f7ff;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .milano-auth-form input {
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-    outline: none;
-  }
-  
-  .milano-auth-btn {
-    padding: 12px;
-    border: none;
-    background-color: #00f7ff;
-    color: black;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .milano-auth-btn:hover {
-    background-color: #00bbff;
-  }
-  
-  .milano-auth-switch {
-    text-align: center;
-    margin-top: 10px;
-    color: #ccc;
-    font-size: 14px;
-  }
-  
-  .milano-auth-switch a {
-    color: #00f7ff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .milano-auth-switch a:hover {
-    text-decoration: underline;
-  }
-  
+  background: linear-gradient(to right, black, rgb(1, 0, 48));
+  color: white;
+  min-height: 100vh;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.milano-auth-form {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(0, 187, 255);
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.milano-auth-form h2 {
+  margin-bottom: 10px;
+  color: #00f7ff;
+  text-align: center;
+  font-weight: bold;
+}
+
+.milano-auth-form input {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+}
+
+.milano-auth-select {
+  width: 22.7em;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(151, 151, 151);
+  outline: none;
+  font-size: 1em;
+  margin-left: -1px;
+}
+
+.milano-auth-select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'><path d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 6px;
+}
+
+
+.milano-auth-btn {
+  padding: 12px;
+  border: none;
+  background-color: #00f7ff;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.milano-auth-btn:hover {
+  background-color: #00bbff;
+}
+
+.milano-auth-switch {
+  text-align: center;
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.milano-auth-switch a {
+  color: #00f7ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.milano-auth-switch a:hover {
+  text-decoration: underline;
+}
